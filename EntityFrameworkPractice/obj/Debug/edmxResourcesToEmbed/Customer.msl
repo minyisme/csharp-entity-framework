@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdventureWorksModelStoreContainer" CdmEntityContainer="AdventureWorksEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="AdventureWorksModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+          <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="AdventureWorksModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="NameStyle" ColumnName="NameStyle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="SalesPerson" ColumnName="SalesPerson" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerAddresses">
+      <EntityTypeMapping TypeName="AdventureWorksModel.CustomerAddress">
+        <MappingFragment StoreEntitySet="CustomerAddress">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="AdventureWorksModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="StandardCost" ColumnName="StandardCost" />
+          <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+          <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+          <ScalarProperty Name="SellStartDate" ColumnName="SellStartDate" />
+          <ScalarProperty Name="SellEndDate" ColumnName="SellEndDate" />
+          <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
+          <ScalarProperty Name="ThumbNailPhoto" ColumnName="ThumbNailPhoto" />
+          <ScalarProperty Name="ThumbnailPhotoFileName" ColumnName="ThumbnailPhotoFileName" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCategories">
+      <EntityTypeMapping TypeName="AdventureWorksModel.ProductCategory">
+        <MappingFragment StoreEntitySet="ProductCategory">
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+          <ScalarProperty Name="ParentProductCategoryID" ColumnName="ParentProductCategoryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductDescriptions">
+      <EntityTypeMapping TypeName="AdventureWorksModel.ProductDescription">
+        <MappingFragment StoreEntitySet="ProductDescription">
+          <ScalarProperty Name="ProductDescriptionID" ColumnName="ProductDescriptionID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductModels">
+      <EntityTypeMapping TypeName="AdventureWorksModel.ProductModel">
+        <MappingFragment StoreEntitySet="ProductModel">
+          <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CatalogDescription" ColumnName="CatalogDescription" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductModelProductDescriptions">
+      <EntityTypeMapping TypeName="AdventureWorksModel.ProductModelProductDescription">
+        <MappingFragment StoreEntitySet="ProductModelProductDescription">
+          <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+          <ScalarProperty Name="ProductDescriptionID" ColumnName="ProductDescriptionID" />
+          <ScalarProperty Name="Culture" ColumnName="Culture" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderDetails">
+      <EntityTypeMapping TypeName="AdventureWorksModel.SalesOrderDetail">
+        <MappingFragment StoreEntitySet="SalesOrderDetail">
+          <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+          <ScalarProperty Name="SalesOrderDetailID" ColumnName="SalesOrderDetailID" />
+          <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="UnitPriceDiscount" ColumnName="UnitPriceDiscount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderHeaders">
+      <EntityTypeMapping TypeName="AdventureWorksModel.SalesOrderHeader">
+        <MappingFragment StoreEntitySet="SalesOrderHeader">
+          <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+          <ScalarProperty Name="RevisionNumber" ColumnName="RevisionNumber" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OnlineOrderFlag" ColumnName="OnlineOrderFlag" />
+          <ScalarProperty Name="SalesOrderNumber" ColumnName="SalesOrderNumber" />
+          <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ShipToAddressID" ColumnName="ShipToAddressID" />
+          <ScalarProperty Name="BillToAddressID" ColumnName="BillToAddressID" />
+          <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
+          <ScalarProperty Name="CreditCardApprovalCode" ColumnName="CreditCardApprovalCode" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vGetAllCategories">
+      <EntityTypeMapping TypeName="AdventureWorksModel.vGetAllCategory">
+        <MappingFragment StoreEntitySet="vGetAllCategories">
+          <ScalarProperty Name="ParentProductCategoryName" ColumnName="ParentProductCategoryName" />
+          <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProductAndDescriptions">
+      <EntityTypeMapping TypeName="AdventureWorksModel.vProductAndDescription">
+        <MappingFragment StoreEntitySet="vProductAndDescription">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductModel" ColumnName="ProductModel" />
+          <ScalarProperty Name="Culture" ColumnName="Culture" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProductModelCatalogDescriptions">
+      <EntityTypeMapping TypeName="AdventureWorksModel.vProductModelCatalogDescription">
+        <MappingFragment StoreEntitySet="vProductModelCatalogDescription">
+          <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Copyright" ColumnName="Copyright" />
+          <ScalarProperty Name="ProductURL" ColumnName="ProductURL" />
+          <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
+          <ScalarProperty Name="WarrantyDescription" ColumnName="WarrantyDescription" />
+          <ScalarProperty Name="NoOfYears" ColumnName="NoOfYears" />
+          <ScalarProperty Name="MaintenanceDescription" ColumnName="MaintenanceDescription" />
+          <ScalarProperty Name="Wheel" ColumnName="Wheel" />
+          <ScalarProperty Name="Saddle" ColumnName="Saddle" />
+          <ScalarProperty Name="Pedal" ColumnName="Pedal" />
+          <ScalarProperty Name="BikeFrame" ColumnName="BikeFrame" />
+          <ScalarProperty Name="Crankset" ColumnName="Crankset" />
+          <ScalarProperty Name="PictureAngle" ColumnName="PictureAngle" />
+          <ScalarProperty Name="PictureSize" ColumnName="PictureSize" />
+          <ScalarProperty Name="ProductPhotoID" ColumnName="ProductPhotoID" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="ProductLine" ColumnName="ProductLine" />
+          <ScalarProperty Name="Style" ColumnName="Style" />
+          <ScalarProperty Name="RiderExperience" ColumnName="RiderExperience" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="AdventureWorksModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="AdventureWorksModel.Store.ufnGetAllCategories" FunctionImportName="ufnGetAllCategories">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.ufnGetAllCategories_Result">
+          <ScalarProperty Name="ParentProductCategoryName" ColumnName="ParentProductCategoryName" />
+          <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="AdventureWorksModel.Store.ufnGetCustomerInformation" FunctionImportName="ufnGetCustomerInformation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.ufnGetCustomerInformation_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspBuildVersionDelete" FunctionName="AdventureWorksModel.Store.cuspBuildVersionDelete" />
+    <FunctionImportMapping FunctionImportName="cuspErrorLogDelete" FunctionName="AdventureWorksModel.Store.cuspErrorLogDelete" />
+    <FunctionImportMapping FunctionImportName="cuspErrorLogInsert" FunctionName="AdventureWorksModel.Store.cuspErrorLogInsert" />
+    <FunctionImportMapping FunctionImportName="cuspErrorLogSelect" FunctionName="AdventureWorksModel.Store.cuspErrorLogSelect" />
+    <FunctionImportMapping FunctionImportName="cuspErrorLogUpdate" FunctionName="AdventureWorksModel.Store.cuspErrorLogUpdate" />
+    <FunctionImportMapping FunctionImportName="uspLogError" FunctionName="AdventureWorksModel.Store.uspLogError" />
+    <FunctionImportMapping FunctionImportName="uspPrintError" FunctionName="AdventureWorksModel.Store.uspPrintError" />
+    <FunctionImportMapping FunctionImportName="cuspAddressDelete" FunctionName="AdventureWorksModel.Store.cuspAddressDelete" />
+    <FunctionImportMapping FunctionImportName="cuspAddressInsert" FunctionName="AdventureWorksModel.Store.cuspAddressInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspAddressInsert_Result">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+          <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspAddressSelect" FunctionName="AdventureWorksModel.Store.cuspAddressSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspAddressSelect_Result">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+          <ScalarProperty Name="CountryRegion" ColumnName="CountryRegion" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspAddressUpdate" FunctionName="AdventureWorksModel.Store.cuspAddressUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspCustomerAddressDelete" FunctionName="AdventureWorksModel.Store.cuspCustomerAddressDelete" />
+    <FunctionImportMapping FunctionImportName="cuspCustomerAddressInsert" FunctionName="AdventureWorksModel.Store.cuspCustomerAddressInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspCustomerAddressInsert_Result">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspCustomerAddressSelect" FunctionName="AdventureWorksModel.Store.cuspCustomerAddressSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspCustomerAddressSelect_Result">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspCustomerAddressUpdate" FunctionName="AdventureWorksModel.Store.cuspCustomerAddressUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspCustomerDelete" FunctionName="AdventureWorksModel.Store.cuspCustomerDelete" />
+    <FunctionImportMapping FunctionImportName="cuspCustomerInsert" FunctionName="AdventureWorksModel.Store.cuspCustomerInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspCustomerInsert_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="NameStyle" ColumnName="NameStyle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="SalesPerson" ColumnName="SalesPerson" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspCustomerSelect" FunctionName="AdventureWorksModel.Store.cuspCustomerSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspCustomerSelect_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="NameStyle" ColumnName="NameStyle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="SalesPerson" ColumnName="SalesPerson" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspCustomerUpdate" FunctionName="AdventureWorksModel.Store.cuspCustomerUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspProductCategoryDelete" FunctionName="AdventureWorksModel.Store.cuspProductCategoryDelete" />
+    <FunctionImportMapping FunctionImportName="cuspProductCategoryInsert" FunctionName="AdventureWorksModel.Store.cuspProductCategoryInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductCategoryInsert_Result">
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+          <ScalarProperty Name="ParentProductCategoryID" ColumnName="ParentProductCategoryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductCategorySelect" FunctionName="AdventureWorksModel.Store.cuspProductCategorySelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductCategorySelect_Result">
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+          <ScalarProperty Name="ParentProductCategoryID" ColumnName="ParentProductCategoryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductCategoryUpdate" FunctionName="AdventureWorksModel.Store.cuspProductCategoryUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspProductDelete" FunctionName="AdventureWorksModel.Store.cuspProductDelete" />
+    <FunctionImportMapping FunctionImportName="cuspProductDescriptionDelete" FunctionName="AdventureWorksModel.Store.cuspProductDescriptionDelete" />
+    <FunctionImportMapping FunctionImportName="cuspProductDescriptionInsert" FunctionName="AdventureWorksModel.Store.cuspProductDescriptionInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductDescriptionInsert_Result">
+          <ScalarProperty Name="ProductDescriptionID" ColumnName="ProductDescriptionID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductDescriptionSelect" FunctionName="AdventureWorksModel.Store.cuspProductDescriptionSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductDescriptionSelect_Result">
+          <ScalarProperty Name="ProductDescriptionID" ColumnName="ProductDescriptionID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductDescriptionUpdate" FunctionName="AdventureWorksModel.Store.cuspProductDescriptionUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspProductInsert" FunctionName="AdventureWorksModel.Store.cuspProductInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductInsert_Result">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="StandardCost" ColumnName="StandardCost" />
+          <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+          <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+          <ScalarProperty Name="SellStartDate" ColumnName="SellStartDate" />
+          <ScalarProperty Name="SellEndDate" ColumnName="SellEndDate" />
+          <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
+          <ScalarProperty Name="ThumbNailPhoto" ColumnName="ThumbNailPhoto" />
+          <ScalarProperty Name="ThumbnailPhotoFileName" ColumnName="ThumbnailPhotoFileName" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductModelDelete" FunctionName="AdventureWorksModel.Store.cuspProductModelDelete" />
+    <FunctionImportMapping FunctionImportName="cuspProductModelInsert" FunctionName="AdventureWorksModel.Store.cuspProductModelInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductModelInsert_Result">
+          <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CatalogDescription" ColumnName="CatalogDescription" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductModelProductDescriptionDelete" FunctionName="AdventureWorksModel.Store.cuspProductModelProductDescriptionDelete" />
+    <FunctionImportMapping FunctionImportName="cuspProductModelProductDescriptionInsert" FunctionName="AdventureWorksModel.Store.cuspProductModelProductDescriptionInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductModelProductDescriptionInsert_Result">
+          <ScalarProperty Name="Culture" ColumnName="Culture" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductModelProductDescriptionSelect" FunctionName="AdventureWorksModel.Store.cuspProductModelProductDescriptionSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductModelProductDescriptionSelect_Result">
+          <ScalarProperty Name="Culture" ColumnName="Culture" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductModelProductDescriptionUpdate" FunctionName="AdventureWorksModel.Store.cuspProductModelProductDescriptionUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspProductModelSelect" FunctionName="AdventureWorksModel.Store.cuspProductModelSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductModelSelect_Result">
+          <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CatalogDescription" ColumnName="CatalogDescription" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductModelUpdate" FunctionName="AdventureWorksModel.Store.cuspProductModelUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspProductSelect" FunctionName="AdventureWorksModel.Store.cuspProductSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspProductSelect_Result">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="StandardCost" ColumnName="StandardCost" />
+          <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+          <ScalarProperty Name="ProductModelID" ColumnName="ProductModelID" />
+          <ScalarProperty Name="SellStartDate" ColumnName="SellStartDate" />
+          <ScalarProperty Name="SellEndDate" ColumnName="SellEndDate" />
+          <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
+          <ScalarProperty Name="ThumbNailPhoto" ColumnName="ThumbNailPhoto" />
+          <ScalarProperty Name="ThumbnailPhotoFileName" ColumnName="ThumbnailPhotoFileName" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspProductUpdate" FunctionName="AdventureWorksModel.Store.cuspProductUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspSalesOrderDetailDelete" FunctionName="AdventureWorksModel.Store.cuspSalesOrderDetailDelete" />
+    <FunctionImportMapping FunctionImportName="cuspSalesOrderDetailInsert" FunctionName="AdventureWorksModel.Store.cuspSalesOrderDetailInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspSalesOrderDetailInsert_Result">
+          <ScalarProperty Name="SalesOrderDetailID" ColumnName="SalesOrderDetailID" />
+          <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="UnitPriceDiscount" ColumnName="UnitPriceDiscount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspSalesOrderDetailSelect" FunctionName="AdventureWorksModel.Store.cuspSalesOrderDetailSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspSalesOrderDetailSelect_Result">
+          <ScalarProperty Name="SalesOrderDetailID" ColumnName="SalesOrderDetailID" />
+          <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="UnitPriceDiscount" ColumnName="UnitPriceDiscount" />
+          <ScalarProperty Name="LineTotal" ColumnName="LineTotal" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspSalesOrderDetailUpdate" FunctionName="AdventureWorksModel.Store.cuspSalesOrderDetailUpdate" />
+    <FunctionImportMapping FunctionImportName="cuspSalesOrderHeaderDelete" FunctionName="AdventureWorksModel.Store.cuspSalesOrderHeaderDelete" />
+    <FunctionImportMapping FunctionImportName="cuspSalesOrderHeaderInsert" FunctionName="AdventureWorksModel.Store.cuspSalesOrderHeaderInsert">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspSalesOrderHeaderInsert_Result">
+          <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+          <ScalarProperty Name="RevisionNumber" ColumnName="RevisionNumber" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OnlineOrderFlag" ColumnName="OnlineOrderFlag" />
+          <ScalarProperty Name="SalesOrderNumber" ColumnName="SalesOrderNumber" />
+          <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ShipToAddressID" ColumnName="ShipToAddressID" />
+          <ScalarProperty Name="BillToAddressID" ColumnName="BillToAddressID" />
+          <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
+          <ScalarProperty Name="CreditCardApprovalCode" ColumnName="CreditCardApprovalCode" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspSalesOrderHeaderSelect" FunctionName="AdventureWorksModel.Store.cuspSalesOrderHeaderSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AdventureWorksModel.cuspSalesOrderHeaderSelect_Result">
+          <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+          <ScalarProperty Name="RevisionNumber" ColumnName="RevisionNumber" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OnlineOrderFlag" ColumnName="OnlineOrderFlag" />
+          <ScalarProperty Name="SalesOrderNumber" ColumnName="SalesOrderNumber" />
+          <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ShipToAddressID" ColumnName="ShipToAddressID" />
+          <ScalarProperty Name="BillToAddressID" ColumnName="BillToAddressID" />
+          <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
+          <ScalarProperty Name="CreditCardApprovalCode" ColumnName="CreditCardApprovalCode" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="TaxAmt" ColumnName="TaxAmt" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="TotalDue" ColumnName="TotalDue" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="cuspSalesOrderHeaderUpdate" FunctionName="AdventureWorksModel.Store.cuspSalesOrderHeaderUpdate" />
+  </EntityContainerMapping>
+</Mapping>

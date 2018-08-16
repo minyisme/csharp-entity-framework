@@ -52,18 +52,131 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspAddressInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspAddressSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspCustomerAddressInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspCustomerAddressSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspCustomerInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspCustomerSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductCategoryInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductCategorySelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductDescriptionInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductDescriptionSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductModelInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductModelProductDescriptionInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductModelProductDescriptionSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductModelSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspProductSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspSalesOrderDetailInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspSalesOrderDetailSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspSalesOrderHeaderInsert_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cuspSalesOrderHeaderSelect_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Customer.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Customer.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
     </Compile>
     <Compile Include="Customer.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Customer.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Customer1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerAddress.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductDescription.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductModel.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductModelProductDescription.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesOrderDetail.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrderHeader.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ufnGetAllCategories_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ufnGetCustomerInformation_Result.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vGetAllCategory.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vProductAndDescription.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vProductModelCatalogDescription.cs">
+      <DependentUpon>Customer.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -80,6 +193,12 @@
     <Content Include="Customer.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Customer.Context.cs</LastGenOutput>
+      <DependentUpon>Customer.edmx</DependentUpon>
+    </Content>
+    <Content Include="Customer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Customer.edmx</DependentUpon>
+      <LastGenOutput>Customer1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

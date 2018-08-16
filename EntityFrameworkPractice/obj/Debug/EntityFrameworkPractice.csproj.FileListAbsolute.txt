@@ -1,0 +1,12 @@
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\bin\Debug\EntityFrameworkPractice.exe.config
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\bin\Debug\EntityFrameworkPractice.exe
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\bin\Debug\EntityFrameworkPractice.pdb
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\bin\Debug\EntityFramework.dll
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\bin\Debug\EntityFramework.xml
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\obj\Debug\EntityFrameworkPractice.csprojAssemblyReference.cache
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\obj\Debug\EntityFrameworkPractice.csproj.CoreCompileInputs.cache
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\obj\Debug\EntityFrameworkPractice.csproj.CopyComplete
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\obj\Debug\EntityFrameworkPractice.exe
+c:\users\v-miyan\source\repos\EntityFrameworkPractice\EntityFrameworkPractice\obj\Debug\EntityFrameworkPractice.pdb

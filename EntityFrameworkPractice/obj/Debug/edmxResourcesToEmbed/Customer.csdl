@@ -1,0 +1,1004 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdventureWorksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="ufnGetAllCategories_Result">
+    <Property Name="ParentProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ufnGetCustomerInformation_Result">
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressLine1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryRegion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PostalCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK_CustomerAddress_Address_AddressID" FromRole="Address" ToRole="CustomerAddress" />
+    <NavigationProperty Name="SalesOrderHeaders" Relationship="Self.FK_SalesOrderHeader_Address_BillTo_AddressID" FromRole="Address" ToRole="SalesOrderHeader" />
+    <NavigationProperty Name="SalesOrderHeaders1" Relationship="Self.FK_SalesOrderHeader_Address_ShipTo_AddressID" FromRole="Address" ToRole="SalesOrderHeader" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameStyle" Type="Boolean" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Suffix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="SalesPerson" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordHash" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK_CustomerAddress_Customer_CustomerID" FromRole="Customer" ToRole="CustomerAddress" />
+    <NavigationProperty Name="SalesOrderHeaders" Relationship="Self.FK_SalesOrderHeader_Customer_CustomerID" FromRole="Customer" ToRole="SalesOrderHeader" />
+  </EntityType>
+  <EntityType Name="CustomerAddress">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="AddressID" Type="Int32" Nullable="false" />
+    <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_CustomerAddress_Address_AddressID" FromRole="CustomerAddress" ToRole="Address" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerAddress_Customer_CustomerID" FromRole="CustomerAddress" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="StandardCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ListPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Size" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ProductCategoryID" Type="Int32" />
+    <Property Name="ProductModelID" Type="Int32" />
+    <Property Name="SellStartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SellEndDate" Type="DateTime" Precision="3" />
+    <Property Name="DiscontinuedDate" Type="DateTime" Precision="3" />
+    <Property Name="ThumbNailPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ThumbnailPhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategory_ProductCategoryID" FromRole="Product" ToRole="ProductCategory" />
+    <NavigationProperty Name="ProductModel" Relationship="Self.FK_Product_ProductModel_ProductModelID" FromRole="Product" ToRole="ProductModel" />
+    <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK_SalesOrderDetail_Product_ProductID" FromRole="Product" ToRole="SalesOrderDetail" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ProductCategoryID" />
+    </Key>
+    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentProductCategoryID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductCategory_ProductCategoryID" FromRole="ProductCategory" ToRole="Product" />
+    <NavigationProperty Name="ProductCategory1" Relationship="Self.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" FromRole="ProductCategory" ToRole="ProductCategory1" />
+    <NavigationProperty Name="ProductCategory2" Relationship="Self.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" FromRole="ProductCategory1" ToRole="ProductCategory" />
+  </EntityType>
+  <EntityType Name="ProductDescription">
+    <Key>
+      <PropertyRef Name="ProductDescriptionID" />
+    </Key>
+    <Property Name="ProductDescriptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ProductModelProductDescriptions" Relationship="Self.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" FromRole="ProductDescription" ToRole="ProductModelProductDescription" />
+  </EntityType>
+  <EntityType Name="ProductModel">
+    <Key>
+      <PropertyRef Name="ProductModelID" />
+    </Key>
+    <Property Name="ProductModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CatalogDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductModel_ProductModelID" FromRole="ProductModel" ToRole="Product" />
+    <NavigationProperty Name="ProductModelProductDescriptions" Relationship="Self.FK_ProductModelProductDescription_ProductModel_ProductModelID" FromRole="ProductModel" ToRole="ProductModelProductDescription" />
+  </EntityType>
+  <EntityType Name="ProductModelProductDescription">
+    <Key>
+      <PropertyRef Name="ProductModelID" />
+      <PropertyRef Name="ProductDescriptionID" />
+      <PropertyRef Name="Culture" />
+    </Key>
+    <Property Name="ProductModelID" Type="Int32" Nullable="false" />
+    <Property Name="ProductDescriptionID" Type="Int32" Nullable="false" />
+    <Property Name="Culture" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ProductDescription" Relationship="Self.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" FromRole="ProductModelProductDescription" ToRole="ProductDescription" />
+    <NavigationProperty Name="ProductModel" Relationship="Self.FK_ProductModelProductDescription_ProductModel_ProductModelID" FromRole="ProductModelProductDescription" ToRole="ProductModel" />
+  </EntityType>
+  <EntityType Name="SalesOrderDetail">
+    <Key>
+      <PropertyRef Name="SalesOrderID" />
+      <PropertyRef Name="SalesOrderDetailID" />
+    </Key>
+    <Property Name="SalesOrderID" Type="Int32" Nullable="false" />
+    <Property Name="SalesOrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderQty" Type="Int16" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="UnitPriceDiscount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="LineTotal" Type="Decimal" Precision="38" Scale="6" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_SalesOrderDetail_Product_ProductID" FromRole="SalesOrderDetail" ToRole="Product" />
+    <NavigationProperty Name="SalesOrderHeader" Relationship="Self.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" FromRole="SalesOrderDetail" ToRole="SalesOrderHeader" />
+  </EntityType>
+  <EntityType Name="SalesOrderHeader">
+    <Key>
+      <PropertyRef Name="SalesOrderID" />
+    </Key>
+    <Property Name="SalesOrderID" Type="Int32" Nullable="false" />
+    <Property Name="RevisionNumber" Type="Byte" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ShipDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="OnlineOrderFlag" Type="Boolean" Nullable="false" />
+    <Property Name="SalesOrderNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="PurchaseOrderNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="AccountNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="ShipToAddressID" Type="Int32" />
+    <Property Name="BillToAddressID" Type="Int32" />
+    <Property Name="ShipMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreditCardApprovalCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TaxAmt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TotalDue" Type="Decimal" Precision="19" Scale="4" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_SalesOrderHeader_Address_BillTo_AddressID" FromRole="SalesOrderHeader" ToRole="Address" />
+    <NavigationProperty Name="Address1" Relationship="Self.FK_SalesOrderHeader_Address_ShipTo_AddressID" FromRole="SalesOrderHeader" ToRole="Address" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_SalesOrderHeader_Customer_CustomerID" FromRole="SalesOrderHeader" ToRole="Customer" />
+    <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" FromRole="SalesOrderHeader" ToRole="SalesOrderDetail" />
+  </EntityType>
+  <EntityType Name="vGetAllCategory">
+    <Key>
+      <PropertyRef Name="ParentProductCategoryName" />
+    </Key>
+    <Property Name="ParentProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductCategoryID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vProductAndDescription">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="ProductModel" />
+      <PropertyRef Name="Culture" />
+      <PropertyRef Name="Description" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Culture" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vProductModelCatalogDescription">
+    <Key>
+      <PropertyRef Name="ProductModelID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="rowguid" />
+      <PropertyRef Name="ModifiedDate" />
+    </Key>
+    <Property Name="ProductModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Manufacturer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Copyright" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProductURL" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="WarrantyPeriod" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="WarrantyDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="NoOfYears" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MaintenanceDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Wheel" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Saddle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Pedal" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="BikeFrame" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Crankset" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PictureAngle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PictureSize" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ProductPhotoID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Material" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ProductLine" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Style" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="RiderExperience" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="rowguid" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_CustomerAddress_Address_AddressID">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="CustomerAddress">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderHeader_Address_BillTo_AddressID">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="SalesOrderHeader">
+        <PropertyRef Name="BillToAddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderHeader_Address_ShipTo_AddressID">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="SalesOrderHeader">
+        <PropertyRef Name="ShipToAddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerAddress_Customer_CustomerID">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="CustomerAddress">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderHeader_Customer_CustomerID">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="SalesOrderHeader">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductCategory_ProductCategoryID">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductModel_ProductModelID">
+    <End Role="ProductModel" Type="Self.ProductModel" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="ProductModelID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductModelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderDetail_Product_ProductID">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="SalesOrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+    <End Role="ProductCategory1" Type="Self.ProductCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCategoryID" />
+      </Principal>
+      <Dependent Role="ProductCategory1">
+        <PropertyRef Name="ParentProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID">
+    <End Role="ProductDescription" Type="Self.ProductDescription" Multiplicity="1" />
+    <End Role="ProductModelProductDescription" Type="Self.ProductModelProductDescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductDescription">
+        <PropertyRef Name="ProductDescriptionID" />
+      </Principal>
+      <Dependent Role="ProductModelProductDescription">
+        <PropertyRef Name="ProductDescriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductModelProductDescription_ProductModel_ProductModelID">
+    <End Role="ProductModel" Type="Self.ProductModel" Multiplicity="1" />
+    <End Role="ProductModelProductDescription" Type="Self.ProductModelProductDescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="ProductModelID" />
+      </Principal>
+      <Dependent Role="ProductModelProductDescription">
+        <PropertyRef Name="ProductModelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID">
+    <End Role="SalesOrderHeader" Type="Self.SalesOrderHeader" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderHeader">
+        <PropertyRef Name="SalesOrderID" />
+      </Principal>
+      <Dependent Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AdventureWorksEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="Self.Address" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="CustomerAddresses" EntityType="Self.CustomerAddress" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
+    <EntitySet Name="ProductDescriptions" EntityType="Self.ProductDescription" />
+    <EntitySet Name="ProductModels" EntityType="Self.ProductModel" />
+    <EntitySet Name="ProductModelProductDescriptions" EntityType="Self.ProductModelProductDescription" />
+    <EntitySet Name="SalesOrderDetails" EntityType="Self.SalesOrderDetail" />
+    <EntitySet Name="SalesOrderHeaders" EntityType="Self.SalesOrderHeader" />
+    <EntitySet Name="vGetAllCategories" EntityType="Self.vGetAllCategory" />
+    <EntitySet Name="vProductAndDescriptions" EntityType="Self.vProductAndDescription" />
+    <EntitySet Name="vProductModelCatalogDescriptions" EntityType="Self.vProductModelCatalogDescription" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+    <AssociationSet Name="FK_CustomerAddress_Address_AddressID" Association="Self.FK_CustomerAddress_Address_AddressID">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderHeader_Address_BillTo_AddressID" Association="Self.FK_SalesOrderHeader_Address_BillTo_AddressID">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderHeader_Address_ShipTo_AddressID" Association="Self.FK_SalesOrderHeader_Address_ShipTo_AddressID">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerAddress_Customer_CustomerID" Association="Self.FK_CustomerAddress_Customer_CustomerID">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderHeader_Customer_CustomerID" Association="Self.FK_SalesOrderHeader_Customer_CustomerID">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductCategory_ProductCategoryID" Association="Self.FK_Product_ProductCategory_ProductCategoryID">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductModel_ProductModelID" Association="Self.FK_Product_ProductModel_ProductModelID">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderDetail_Product_ProductID" Association="Self.FK_SalesOrderDetail_Product_ProductID">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID" Association="Self.FK_ProductCategory_ProductCategory_ParentProductCategoryID_ProductCategoryID">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="ProductCategory1" EntitySet="ProductCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID" Association="Self.FK_ProductModelProductDescription_ProductDescription_ProductDescriptionID">
+      <End Role="ProductDescription" EntitySet="ProductDescriptions" />
+      <End Role="ProductModelProductDescription" EntitySet="ProductModelProductDescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductModelProductDescription_ProductModel_ProductModelID" Association="Self.FK_ProductModelProductDescription_ProductModel_ProductModelID">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="ProductModelProductDescription" EntitySet="ProductModelProductDescriptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" Association="Self.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID">
+      <End Role="SalesOrderHeader" EntitySet="SalesOrderHeaders" />
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+    </AssociationSet>
+    <FunctionImport Name="ufnGetAllCategories" IsComposable="true" ReturnType="Collection(AdventureWorksModel.ufnGetAllCategories_Result)" />
+    <FunctionImport Name="ufnGetCustomerInformation" IsComposable="true" ReturnType="Collection(AdventureWorksModel.ufnGetCustomerInformation_Result)">
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspBuildVersionDelete">
+      <Parameter Name="SystemInformationID" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="cuspErrorLogDelete">
+      <Parameter Name="ErrorLogID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspErrorLogInsert">
+      <Parameter Name="ErrorTime" Mode="In" Type="DateTime" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="ErrorNumber" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorSeverity" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorState" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorProcedure" Mode="In" Type="String" />
+      <Parameter Name="ErrorLine" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorMessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cuspErrorLogSelect">
+      <Parameter Name="ErrorLogID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspErrorLogUpdate">
+      <Parameter Name="ErrorLogID" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorTime" Mode="In" Type="DateTime" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="ErrorNumber" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorSeverity" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorState" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorProcedure" Mode="In" Type="String" />
+      <Parameter Name="ErrorLine" Mode="In" Type="Int32" />
+      <Parameter Name="ErrorMessage" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspLogError">
+      <Parameter Name="ErrorLogID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="uspPrintError" />
+    <FunctionImport Name="cuspAddressDelete">
+      <Parameter Name="AddressID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspAddressInsert" ReturnType="Collection(AdventureWorksModel.cuspAddressInsert_Result)">
+      <Parameter Name="AddressLine1" Mode="In" Type="String" />
+      <Parameter Name="AddressLine2" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="StateProvince" Mode="In" Type="String" />
+      <Parameter Name="CountryRegion" Mode="In" Type="String" />
+      <Parameter Name="PostalCode" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspAddressSelect" ReturnType="Collection(AdventureWorksModel.cuspAddressSelect_Result)">
+      <Parameter Name="AddressID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspAddressUpdate">
+      <Parameter Name="AddressID" Mode="In" Type="Int32" />
+      <Parameter Name="AddressLine1" Mode="In" Type="String" />
+      <Parameter Name="AddressLine2" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="StateProvince" Mode="In" Type="String" />
+      <Parameter Name="CountryRegion" Mode="In" Type="String" />
+      <Parameter Name="PostalCode" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspCustomerAddressDelete">
+      <Parameter Name="AddressID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspCustomerAddressInsert" ReturnType="Collection(AdventureWorksModel.cuspCustomerAddressInsert_Result)">
+      <Parameter Name="AddressType" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspCustomerAddressSelect" ReturnType="Collection(AdventureWorksModel.cuspCustomerAddressSelect_Result)">
+      <Parameter Name="AddressID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspCustomerAddressUpdate">
+      <Parameter Name="AddressID" Mode="In" Type="Int32" />
+      <Parameter Name="AddressType" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspCustomerDelete">
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspCustomerInsert" ReturnType="Collection(AdventureWorksModel.cuspCustomerInsert_Result)">
+      <Parameter Name="NameStyle" Mode="In" Type="Boolean" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Suffix" Mode="In" Type="String" />
+      <Parameter Name="CompanyName" Mode="In" Type="String" />
+      <Parameter Name="SalesPerson" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="PasswordHash" Mode="In" Type="String" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspCustomerSelect" ReturnType="Collection(AdventureWorksModel.cuspCustomerSelect_Result)">
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspCustomerUpdate">
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+      <Parameter Name="NameStyle" Mode="In" Type="Boolean" />
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="MiddleName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Suffix" Mode="In" Type="String" />
+      <Parameter Name="CompanyName" Mode="In" Type="String" />
+      <Parameter Name="SalesPerson" Mode="In" Type="String" />
+      <Parameter Name="EmailAddress" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="PasswordHash" Mode="In" Type="String" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductCategoryDelete">
+      <Parameter Name="ProductCategoryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductCategoryInsert" ReturnType="Collection(AdventureWorksModel.cuspProductCategoryInsert_Result)">
+      <Parameter Name="ParentProductCategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductCategorySelect" ReturnType="Collection(AdventureWorksModel.cuspProductCategorySelect_Result)">
+      <Parameter Name="ProductCategoryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductCategoryUpdate">
+      <Parameter Name="ProductCategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="ParentProductCategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductDelete">
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductDescriptionDelete">
+      <Parameter Name="ProductDescriptionID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductDescriptionInsert" ReturnType="Collection(AdventureWorksModel.cuspProductDescriptionInsert_Result)">
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductDescriptionSelect" ReturnType="Collection(AdventureWorksModel.cuspProductDescriptionSelect_Result)">
+      <Parameter Name="ProductDescriptionID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductDescriptionUpdate">
+      <Parameter Name="ProductDescriptionID" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductInsert" ReturnType="Collection(AdventureWorksModel.cuspProductInsert_Result)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="ProductNumber" Mode="In" Type="String" />
+      <Parameter Name="Color" Mode="In" Type="String" />
+      <Parameter Name="StandardCost" Mode="In" Type="Decimal" />
+      <Parameter Name="ListPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="Size" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="Decimal" />
+      <Parameter Name="ProductCategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductModelID" Mode="In" Type="Int32" />
+      <Parameter Name="SellStartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="SellEndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="DiscontinuedDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ThumbNailPhoto" Mode="In" Type="Binary" />
+      <Parameter Name="ThumbnailPhotoFileName" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductModelDelete">
+      <Parameter Name="ProductModelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductModelInsert" ReturnType="Collection(AdventureWorksModel.cuspProductModelInsert_Result)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="CatalogDescription" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductModelProductDescriptionDelete">
+      <Parameter Name="Culture" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductModelProductDescriptionInsert" ReturnType="Collection(AdventureWorksModel.cuspProductModelProductDescriptionInsert_Result)">
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductModelProductDescriptionSelect" ReturnType="Collection(AdventureWorksModel.cuspProductModelProductDescriptionSelect_Result)">
+      <Parameter Name="Culture" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductModelProductDescriptionUpdate">
+      <Parameter Name="Culture" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductModelSelect" ReturnType="Collection(AdventureWorksModel.cuspProductModelSelect_Result)">
+      <Parameter Name="ProductModelID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductModelUpdate">
+      <Parameter Name="ProductModelID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="CatalogDescription" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductSelect" ReturnType="Collection(AdventureWorksModel.cuspProductSelect_Result)">
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspProductUpdate">
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="ProductNumber" Mode="In" Type="String" />
+      <Parameter Name="Color" Mode="In" Type="String" />
+      <Parameter Name="StandardCost" Mode="In" Type="Decimal" />
+      <Parameter Name="ListPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="Size" Mode="In" Type="String" />
+      <Parameter Name="Weight" Mode="In" Type="Decimal" />
+      <Parameter Name="ProductCategoryID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductModelID" Mode="In" Type="Int32" />
+      <Parameter Name="SellStartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="SellEndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="DiscontinuedDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ThumbNailPhoto" Mode="In" Type="Binary" />
+      <Parameter Name="ThumbnailPhotoFileName" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspSalesOrderDetailDelete">
+      <Parameter Name="SalesOrderDetailID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspSalesOrderDetailInsert" ReturnType="Collection(AdventureWorksModel.cuspSalesOrderDetailInsert_Result)">
+      <Parameter Name="OrderQty" Mode="In" Type="Int16" />
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+      <Parameter Name="UnitPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="UnitPriceDiscount" Mode="In" Type="Decimal" />
+      <Parameter Name="LineTotal" Mode="In" Type="Decimal" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspSalesOrderDetailSelect" ReturnType="Collection(AdventureWorksModel.cuspSalesOrderDetailSelect_Result)">
+      <Parameter Name="SalesOrderDetailID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspSalesOrderDetailUpdate">
+      <Parameter Name="SalesOrderDetailID" Mode="In" Type="Int32" />
+      <Parameter Name="OrderQty" Mode="In" Type="Int16" />
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+      <Parameter Name="UnitPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="UnitPriceDiscount" Mode="In" Type="Decimal" />
+      <Parameter Name="LineTotal" Mode="In" Type="Decimal" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspSalesOrderHeaderDelete">
+      <Parameter Name="SalesOrderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspSalesOrderHeaderInsert" ReturnType="Collection(AdventureWorksModel.cuspSalesOrderHeaderInsert_Result)">
+      <Parameter Name="RevisionNumber" Mode="In" Type="Byte" />
+      <Parameter Name="OrderDate" Mode="In" Type="DateTime" />
+      <Parameter Name="DueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ShipDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Status" Mode="In" Type="Byte" />
+      <Parameter Name="OnlineOrderFlag" Mode="In" Type="Boolean" />
+      <Parameter Name="SalesOrderNumber" Mode="In" Type="String" />
+      <Parameter Name="PurchaseOrderNumber" Mode="In" Type="String" />
+      <Parameter Name="AccountNumber" Mode="In" Type="String" />
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+      <Parameter Name="ShipToAddressID" Mode="In" Type="Int32" />
+      <Parameter Name="BillToAddressID" Mode="In" Type="Int32" />
+      <Parameter Name="ShipMethod" Mode="In" Type="String" />
+      <Parameter Name="CreditCardApprovalCode" Mode="In" Type="String" />
+      <Parameter Name="SubTotal" Mode="In" Type="Decimal" />
+      <Parameter Name="TaxAmt" Mode="In" Type="Decimal" />
+      <Parameter Name="Freight" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalDue" Mode="In" Type="Decimal" />
+      <Parameter Name="Comment" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="cuspSalesOrderHeaderSelect" ReturnType="Collection(AdventureWorksModel.cuspSalesOrderHeaderSelect_Result)">
+      <Parameter Name="SalesOrderID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="cuspSalesOrderHeaderUpdate">
+      <Parameter Name="SalesOrderID" Mode="In" Type="Int32" />
+      <Parameter Name="RevisionNumber" Mode="In" Type="Byte" />
+      <Parameter Name="OrderDate" Mode="In" Type="DateTime" />
+      <Parameter Name="DueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ShipDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Status" Mode="In" Type="Byte" />
+      <Parameter Name="OnlineOrderFlag" Mode="In" Type="Boolean" />
+      <Parameter Name="SalesOrderNumber" Mode="In" Type="String" />
+      <Parameter Name="PurchaseOrderNumber" Mode="In" Type="String" />
+      <Parameter Name="AccountNumber" Mode="In" Type="String" />
+      <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+      <Parameter Name="ShipToAddressID" Mode="In" Type="Int32" />
+      <Parameter Name="BillToAddressID" Mode="In" Type="Int32" />
+      <Parameter Name="ShipMethod" Mode="In" Type="String" />
+      <Parameter Name="CreditCardApprovalCode" Mode="In" Type="String" />
+      <Parameter Name="SubTotal" Mode="In" Type="Decimal" />
+      <Parameter Name="TaxAmt" Mode="In" Type="Decimal" />
+      <Parameter Name="Freight" Mode="In" Type="Decimal" />
+      <Parameter Name="TotalDue" Mode="In" Type="Decimal" />
+      <Parameter Name="Comment" Mode="In" Type="String" />
+      <Parameter Name="rowguid" Mode="In" Type="Guid" />
+      <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="cuspAddressInsert_Result">
+    <Property Type="Int32" Name="AddressID" Nullable="false" />
+    <Property Type="String" Name="AddressLine1" Nullable="false" MaxLength="60" />
+    <Property Type="String" Name="AddressLine2" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="StateProvince" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CountryRegion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PostalCode" Nullable="false" MaxLength="15" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspAddressSelect_Result">
+    <Property Type="Int32" Name="AddressID" Nullable="false" />
+    <Property Type="String" Name="AddressLine1" Nullable="false" MaxLength="60" />
+    <Property Type="String" Name="AddressLine2" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="City" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="StateProvince" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CountryRegion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PostalCode" Nullable="false" MaxLength="15" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspCustomerAddressInsert_Result">
+    <Property Type="Int32" Name="AddressID" Nullable="false" />
+    <Property Type="String" Name="AddressType" Nullable="false" MaxLength="50" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspCustomerAddressSelect_Result">
+    <Property Type="Int32" Name="AddressID" Nullable="false" />
+    <Property Type="String" Name="AddressType" Nullable="false" MaxLength="50" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspCustomerInsert_Result">
+    <Property Type="Int32" Name="CustomerID" Nullable="false" />
+    <Property Type="Boolean" Name="NameStyle" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Suffix" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="SalesPerson" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="PasswordHash" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="10" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspCustomerSelect_Result">
+    <Property Type="Int32" Name="CustomerID" Nullable="false" />
+    <Property Type="Boolean" Name="NameStyle" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Suffix" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="SalesPerson" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="PasswordHash" Nullable="false" MaxLength="128" />
+    <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="10" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductCategoryInsert_Result">
+    <Property Type="Int32" Name="ProductCategoryID" Nullable="false" />
+    <Property Type="Int32" Name="ParentProductCategoryID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductCategorySelect_Result">
+    <Property Type="Int32" Name="ProductCategoryID" Nullable="false" />
+    <Property Type="Int32" Name="ParentProductCategoryID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductDescriptionInsert_Result">
+    <Property Type="Int32" Name="ProductDescriptionID" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="400" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductDescriptionSelect_Result">
+    <Property Type="Int32" Name="ProductDescriptionID" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="400" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductInsert_Result">
+    <Property Type="Int32" Name="ProductID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ProductNumber" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Color" Nullable="true" MaxLength="15" />
+    <Property Type="Decimal" Name="StandardCost" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="ListPrice" Nullable="false" Precision="19" />
+    <Property Type="String" Name="Size" Nullable="true" MaxLength="5" />
+    <Property Type="Decimal" Name="Weight" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Int32" Name="ProductCategoryID" Nullable="true" />
+    <Property Type="Int32" Name="ProductModelID" Nullable="true" />
+    <Property Type="DateTime" Name="SellStartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="SellEndDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DiscontinuedDate" Nullable="true" Precision="23" />
+    <Property Type="Binary" Name="ThumbNailPhoto" Nullable="true" />
+    <Property Type="String" Name="ThumbnailPhotoFileName" Nullable="true" MaxLength="50" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductModelInsert_Result">
+    <Property Type="Int32" Name="ProductModelID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CatalogDescription" Nullable="true" MaxLength="Max" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductModelProductDescriptionInsert_Result">
+    <Property Type="String" Name="Culture" Nullable="false" MaxLength="6" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductModelProductDescriptionSelect_Result">
+    <Property Type="String" Name="Culture" Nullable="false" MaxLength="6" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductModelSelect_Result">
+    <Property Type="Int32" Name="ProductModelID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CatalogDescription" Nullable="true" MaxLength="Max" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspProductSelect_Result">
+    <Property Type="Int32" Name="ProductID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ProductNumber" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Color" Nullable="true" MaxLength="15" />
+    <Property Type="Decimal" Name="StandardCost" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="ListPrice" Nullable="false" Precision="19" />
+    <Property Type="String" Name="Size" Nullable="true" MaxLength="5" />
+    <Property Type="Decimal" Name="Weight" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Int32" Name="ProductCategoryID" Nullable="true" />
+    <Property Type="Int32" Name="ProductModelID" Nullable="true" />
+    <Property Type="DateTime" Name="SellStartDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="SellEndDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DiscontinuedDate" Nullable="true" Precision="23" />
+    <Property Type="Binary" Name="ThumbNailPhoto" Nullable="true" />
+    <Property Type="String" Name="ThumbnailPhotoFileName" Nullable="true" MaxLength="50" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspSalesOrderDetailInsert_Result">
+    <Property Type="Int32" Name="SalesOrderDetailID" Nullable="false" />
+    <Property Type="Int16" Name="OrderQty" Nullable="false" />
+    <Property Type="Int32" Name="ProductID" Nullable="false" />
+    <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="UnitPriceDiscount" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="LineTotal" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspSalesOrderDetailSelect_Result">
+    <Property Type="Int32" Name="SalesOrderDetailID" Nullable="false" />
+    <Property Type="Int16" Name="OrderQty" Nullable="false" />
+    <Property Type="Int32" Name="ProductID" Nullable="false" />
+    <Property Type="Decimal" Name="UnitPrice" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="UnitPriceDiscount" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="LineTotal" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspSalesOrderHeaderInsert_Result">
+    <Property Type="Int32" Name="SalesOrderID" Nullable="false" />
+    <Property Type="Byte" Name="RevisionNumber" Nullable="false" />
+    <Property Type="DateTime" Name="OrderDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="DueDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ShipDate" Nullable="true" Precision="23" />
+    <Property Type="Byte" Name="Status" Nullable="false" />
+    <Property Type="Boolean" Name="OnlineOrderFlag" Nullable="false" />
+    <Property Type="String" Name="SalesOrderNumber" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="PurchaseOrderNumber" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="AccountNumber" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="CustomerID" Nullable="false" />
+    <Property Type="Int32" Name="ShipToAddressID" Nullable="true" />
+    <Property Type="Int32" Name="BillToAddressID" Nullable="true" />
+    <Property Type="String" Name="ShipMethod" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CreditCardApprovalCode" Nullable="true" MaxLength="15" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="TaxAmt" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="Freight" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="TotalDue" Nullable="false" Precision="19" />
+    <Property Type="String" Name="Comment" Nullable="true" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="cuspSalesOrderHeaderSelect_Result">
+    <Property Type="Int32" Name="SalesOrderID" Nullable="false" />
+    <Property Type="Byte" Name="RevisionNumber" Nullable="false" />
+    <Property Type="DateTime" Name="OrderDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="DueDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="ShipDate" Nullable="true" Precision="23" />
+    <Property Type="Byte" Name="Status" Nullable="false" />
+    <Property Type="Boolean" Name="OnlineOrderFlag" Nullable="false" />
+    <Property Type="String" Name="SalesOrderNumber" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="PurchaseOrderNumber" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="AccountNumber" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="CustomerID" Nullable="false" />
+    <Property Type="Int32" Name="ShipToAddressID" Nullable="true" />
+    <Property Type="Int32" Name="BillToAddressID" Nullable="true" />
+    <Property Type="String" Name="ShipMethod" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CreditCardApprovalCode" Nullable="true" MaxLength="15" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="TaxAmt" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="Freight" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="TotalDue" Nullable="false" Precision="19" />
+    <Property Type="String" Name="Comment" Nullable="true" />
+    <Property Type="Guid" Name="rowguid" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="false" Precision="23" />
+  </ComplexType>
+</Schema>
